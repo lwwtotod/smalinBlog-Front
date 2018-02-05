@@ -9,7 +9,6 @@ export default {
   name: 'buttonMain',
   data () {
     return {
-        nale: null
     }
   },
   methods(){
