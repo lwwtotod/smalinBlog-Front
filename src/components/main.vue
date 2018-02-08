@@ -1,18 +1,21 @@
 <template>
  <div class="main">
-    <Header></Header>
-    <sidebar></sidebar>
+    <headerTitle></headerTitle>
+      <sideBar></sideBar>
+      <Content></Content>
 </div>
 </template>
 
 <script>
-import Header from "./header";
-import sidebar from "./sidebar";
+import headerTitle from "./headerTitle";
+import sideBar from "./sidebar";
+import Content from "./content";
 export default {
-  name: "main",
+  name: "Main",
   components: {
-    Header,
-    sidebar
+    headerTitle,
+    sideBar,
+    Content
   },
   data() {
     return {
@@ -33,5 +36,7 @@ export default {
 </script>
 
 <style scoped>
-
+.sider{
+  float:left;
+}
 </style>

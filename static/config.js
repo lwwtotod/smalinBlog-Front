@@ -1,1 +1,3 @@
-export const client = new hprose.HttpClient("http://localhost:8081/hprose");
+window.config = {
+    hprose: "http://172.16.100.133:8081/hprose"
+}
