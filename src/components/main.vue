@@ -3,6 +3,7 @@
     <headerTitle></headerTitle>
       <sideBar></sideBar>
       <Content></Content>
+      <rightAlert></rightAlert>
 </div>
 </template>
 
@@ -10,12 +11,14 @@
 import headerTitle from "./headerTitle";
 import sideBar from "./sidebar";
 import Content from "./content";
+import rightAlert from "./contents/article";
 export default {
   name: "Main",
   components: {
     headerTitle,
     sideBar,
-    Content
+    Content,
+    rightAlert
   },
   data() {
     return {
@@ -31,6 +34,10 @@ export default {
     menuitemClasses: function() {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     }
+  },
+  mounted(){
+    // 默认跳转路由到home组件 2018/2/8
+    this.$router.push('/Home');
   }
 };
 </script>

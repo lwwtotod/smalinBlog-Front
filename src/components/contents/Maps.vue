@@ -17,7 +17,8 @@ export default {
       var lat = position.coords.latitude; //纬度
       var lag = position.coords.longitude; //经度
       this.latLng = [lat, lag];
-      L.mark(this.latLng).addTo(this.map);
+      L.marker(this.latLng).addTo(this.map).bindPopup('你在这!')
+    .openPopup();;
       this.map.setView(this.latLng, this.map.getZoom());
     },
     showError(error) {
@@ -48,7 +49,7 @@ export default {
     }
     this.map = L.map("map", {
       center: [39.89945, 116.40769],
-      zoom: 13
+      zoom: 12
     });
     L.tileLayer(
       `https://api.mapbox.com/styles/v1/smalin0020/cjd587s9c14qk2rvhrgxp3rtd/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic21hbGluMDAyMCIsImEiOiJjamQzd2tqNDQwOGF2MndxcmRscm1zOHUwIn0.t4JONh4lXUzCuNcUgg8lJQ`
