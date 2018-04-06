@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import css from '../libs/sheets-of-paper-a4.css'
 import headerTitle from "./headerTitle";
 import sideBar from "./sidebar";
 import Content from "./content";

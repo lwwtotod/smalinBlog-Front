@@ -23,3 +23,12 @@ new Vue({
   components: { App }
 })
 // document.onselectstart = new Function("return false");
+
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start();
+  next();
+});
+
+router.afterEach(route => {
+  iView.LoadingBar.finish();
+});

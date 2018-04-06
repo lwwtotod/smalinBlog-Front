@@ -4,6 +4,8 @@
             <span class = "textLogo">Smalin</span>
             <Button style = "float: right;margin-top: 15px;" type="primary" shape="circle" icon="person"
             @click="modal1 = true">Sign up</Button>
+            <Button style = "float: right;margin-top: 15px;margin-right: 15px;" type="primary" shape="circle" icon="person"
+            @click="editArticle">Edit</Button>
         </Header>
     <Modal style = "margin-top: 10%;"
         v-model="modal1"
@@ -23,10 +25,11 @@
 </template>
 
 <script>
+import * as TYPES from "../vuex/mutation-types.js";
+import { mapActions } from "vuex";
 export default {
   name: "headerTitle",
-  component: {
-  },
+  component: {},
   data() {
     return {
       map: null,
@@ -37,20 +40,15 @@ export default {
     };
   },
   watch: {
-    latLng: function() {
-      L.marker(this.latLng)
-        .addTo(this.map)
-        .bindPopup("你在这!")
-        .openPopup();
-      this.map.setView(this.latLng, 12);
-    }
   },
   methods: {
+    ...mapActions({
+      changeeditArticle: TYPES.changeeditArticle,
+    }),
     ok() {
-      client.invoke('signUp', [this.userName, this.passWord], (res) =>{
-        
-      this.$Message.info(res);
-      })
+      client.invoke("signUp", [this.userName, this.passWord], res => {
+        this.$Message.info(res);
+      });
       this.userName = null;
       this.passWord = null;
     },
@@ -58,18 +56,12 @@ export default {
       this.$Message.info("取消登录！");
       this.userName = null;
       this.passWord = null;
+    },
+    editArticle(){
+      this.changeeditArticle(true);
     }
   },
   mounted() {
-    //   client.invoke("getName", ["1"], function(name) {
-    //     console.log(name);
-    //   });
-      // L.tileLayer("http://t7.tianditu.cn/cva_w/wmts?" +
-      // "SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cva&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles" +
-      // "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}", {
-      //   attribution:
-      //     '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      // }).addTo(map);
   }
 };
 </script>
